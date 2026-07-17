@@ -1,35 +1,33 @@
-# Scalable Python Web Application using Docker, Amazon ECR and Amazon ECS
+# Student Deployment Demo
 
 ## Project Overview
 
-This project demonstrates the deployment of a containerized Python web application using Docker and Amazon Web Services (AWS). The application is developed using Flask, packaged into a Docker container, stored in Amazon Elastic Container Registry (ECR), and deployed using Amazon Elastic Container Service (ECS) with AWS Fargate.
+Student Deployment Demo is a simple Flask-based web application that demonstrates deploying a Python application on a Linux server. The application reads student information from a JSON file, identifies the topper based on marks, and displays the result through a web interface.
 
-The project showcases a modern container-based deployment workflow commonly used in cloud-native application development.
+This project focuses on learning application deployment using Python and Flask.
 
 ---
 
 ## Features
 
-- Python Flask web application
-- Docker containerization
-- Amazon Elastic Container Registry (ECR) integration
-- Amazon Elastic Container Service (ECS) deployment
-- AWS Fargate serverless compute
-- Health check endpoint
-- CloudWatch log integration
+- Reads student records from a JSON file
+- Finds the student with the highest marks
+- Displays topper information
+- Simple HTML interface
+- Flask web server
+- Python deployment script
 
 ---
 
 ## Technologies Used
 
-- Python 3
+- Python
 - Flask
-- Docker
-- Amazon ECS
-- Amazon ECR
-- AWS Fargate
-- Amazon CloudWatch
-- IAM
+- JSON
+- HTML
+- Linux
+- Git
+- GitHub
 
 ---
 
@@ -38,104 +36,71 @@ The project showcases a modern container-based deployment workflow commonly used
 ```
 studentdeploy-pro/
 │
-├── .github/
-│   └── workflows/
-│       └── deploy.yml
-│
-├── screenshots/
-│   ├── AmazonECR.png
-│   ├── AmazonECS.png
-│   ├── EC2-Instance.png
-│   ├── ecs-service.png
-│   ├── ecs-task-fargate.png
-│   └── task-definition.png
-│
 ├── app.py
 ├── deploy.py
-├── requirements.txt
 ├── students.json
-├── .gitignore
-└── README.md
+├── requirements.txt
+├── README.md
+└── screenshots/
 ```
 
 ---
 
-## Application Endpoints
+## How It Works
 
-| Endpoint | Description |
-|----------|-------------|
-| `/` | Returns the application welcome message |
-| `/health` | Returns the application health status |
+1. Flask starts the application.
+2. Student records are loaded from `students.json`.
+3. The application identifies the student with the highest marks.
+4. The topper's details are displayed on the homepage.
 
 ---
 
-## Docker Commands
+## Running the Project
 
-### Build Docker Image
+Install dependencies:
 
 ```bash
-docker build -t ecs-python-app .
+pip install -r requirements.txt
 ```
 
-### Run Docker Container
+Start the application:
 
 ```bash
-docker run -d -p 5000:5000 ecs-python-app
+python deploy.py
 ```
 
-### List Running Containers
+or
 
 ```bash
-docker ps
+python app.py
+```
+
+Open:
+
+```
+http://localhost:5000
 ```
 
 ---
 
-## Deployment Workflow
+## Screenshots
 
-1. Develop the Flask application.
-2. Create a Docker image.
-3. Push the Docker image to Amazon ECR.
-4. Create an Amazon ECS Cluster.
-5. Configure an ECS Task Definition.
-6. Deploy the application using AWS Fargate.
-7. Verify the running ECS service.
+The `screenshots` folder contains:
 
----
-
-## AWS Services Used
-
-- Amazon Elastic Container Registry (ECR)
-- Amazon Elastic Container Service (ECS)
-- AWS Fargate
-- Amazon CloudWatch
-- AWS Identity and Access Management (IAM)
-
----
-
-## Deployment Screenshots
-
-The `screenshots` directory contains deployment screenshots demonstrating:
-
-- Amazon ECR Repository
-- Amazon ECS Cluster
-- ECS Service
-- ECS Task running on AWS Fargate
-- ECS Task Definition
-- EC2 Instance (if used during the deployment workflow)
+- Application Homepage
+- Flask Running
+- Deployment Process
+- EC2 Deployment (if applicable)
 
 ---
 
 ## Learning Outcomes
 
-This project demonstrates practical experience with:
-
-- Containerizing Python applications using Docker
-- Managing Docker images in Amazon ECR
-- Deploying containers using Amazon ECS
-- Running serverless containers with AWS Fargate
-- Configuring ECS task definitions and services
-- Understanding cloud-native application deployment
+- Flask web development
+- Reading JSON data
+- Python scripting
+- Web application deployment
+- Git and GitHub workflow
 
 ---
 
