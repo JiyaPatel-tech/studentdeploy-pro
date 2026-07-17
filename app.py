@@ -1,10 +1,27 @@
+from flask import Flask
 import json
 
-with open("students.json", "r") as file:
-    students = json.load(file)
+app = Flask(__name__)
 
-topper = max(students, key=lambda student: student["marks"])
+@app.route("/")
+def home():
+    with open("students.json", "r") as file:
+        students = json.load(file)
 
-print("========== Student Report ==========")
-print("Topper :", topper["name"])
-print("Marks  :", topper["marks"])
+    topper = max(students, key=lambda x: x["marks"])
+
+    return f"""
+    <html>
+    <head>
+        <title>Student Deploy Demo</title>
+    </head>
+    <body style="font-family:Arial;text-align:center;margin-top:100px;">
+        <h1>Student Deployment Demo</h1>
+        <h2>Topper: {topper['name']}</h2>
+        <h3>Marks: {topper['marks']}</h3>
+    </body>
+    </html>
+    """
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
